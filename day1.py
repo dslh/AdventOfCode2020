@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from itertools import combinations
 from get_aoc import get_input_integers
 
