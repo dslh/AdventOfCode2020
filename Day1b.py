@@ -228,7 +228,7 @@ def sums_to_2020(values):
     print("hello")
     return sum (values) == 2020
 
-result = list(filter(sums_to_2020, all_expense_pairs))
+result = next(pair for pair in all_expense_pairs if sums_to_2020(pair))
 print(result)
 #x, y = result(0)
 #print(result)
