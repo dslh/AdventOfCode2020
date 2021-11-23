@@ -341,8 +341,6 @@ for currentLine in split_input:
     if currentLine[horiPos] == "#": numTreesHit += 1 # If on a tree increase the counter
     print(numTreesHit, horiPos)
     #move()
-    horiPos += 3
-    if horiPos >= piste: horiPos = horiPos - piste # Ensures that if the toboggan goes off the right of the data, it starts again. Because the trees wrap 
-
+    horiPos = (horiPos + 3) % piste # Ensures that if the toboggan goes off the right of the data, it starts again. Because the trees wrap
     
 print(numTreesHit)
