@@ -1007,11 +1007,8 @@ print(type(split_input))
 print(len(split_input)) # Is 1000
 
 rightPW = 0
-lineNum = 0
 
-while lineNum <= 999: #1000: #len(split_input) - Hopefully I'm not 1 to long or short
-#for x in split_input:
-    firstLine = split_input[lineNum]
+for firstLine in split_input:
     #print(firstLine)
     #print(type(firstLine))
     splitLine = firstLine.split()
@@ -1056,7 +1053,6 @@ while lineNum <= 999: #1000: #len(split_input) - Hopefully I'm not 1 to long or 
 
     if i >= minI and i <=maxI : rightPW += 1
     #i = 0
-    lineNum += 1
 
 print("Number of correct passwords = ")
 print(rightPW)
