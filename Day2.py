@@ -1019,31 +1019,13 @@ for firstLine in split_input:
     letter = letterB[0]
     #print(letter)
 
-
     i = password.count(letter)
 
     whereHyp = times.find("-")
-    lenTimes = len(times)
-    if whereHyp == 1:
-        min = times[0]
-    else:
-        min = times[0] + times[1]
-    if lenTimes - whereHyp == 1:
-        max = times[whereHyp + 1]
-    else:
-        tmp1 = whereHyp + 1
-        tmp2 = whereHyp + 2
-        #max = times[tmp1] + times[tmp2]
-        max = times[whereHyp + 1]
-        #max[tmp1:lenTimes]
+    min = int(times[:whereHyp])
+    max = int(times[whereHyp+1:])
 
-    #print(min, max)
-    #print(type(min))
-    minI=int(min)
-    maxI=int(max)
-    #print(type(minI))
-
-    if i >= minI and i <=maxI : rightPW += 1
+    if i >= min and i <= max : rightPW += 1
     #i = 0
 
 print("Number of correct passwords = ")
