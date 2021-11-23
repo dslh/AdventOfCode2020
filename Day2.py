@@ -1021,9 +1021,7 @@ for firstLine in split_input:
 
     i = password.count(letter)
 
-    whereHyp = times.find("-")
-    min = int(times[:whereHyp])
-    max = int(times[whereHyp+1:])
+    min, max = [int(val) for val in times.split('-')]
 
     if i >= min and i <= max : rightPW += 1
     #i = 0
