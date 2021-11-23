@@ -1011,20 +1011,17 @@ rightPW = 0
 for firstLine in split_input:
     #print(firstLine)
     #print(type(firstLine))
-    splitLine = firstLine.split()
+    times, letterB, password = firstLine.split()
     #print(splitLine)
     #print(type(splitLine))
 
-    letterB = splitLine[1]
     #print(letterB)
     letter = letterB[0]
     #print(letter)
 
-    password = splitLine[2]
 
     i = password.count(letter)
 
-    times = splitLine[0]
     whereHyp = times.find("-")
     lenTimes = len(times)
     if whereHyp == 1:
