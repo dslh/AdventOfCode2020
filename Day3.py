@@ -338,9 +338,7 @@ print(numTreesHit, horiPos)
 
 for currentLine in split_input:
     print(currentLine)
-    currentGround = currentLine[horiPos] # Get's the terrain
-    print(currentGround)
-    if currentGround == "#": numTreesHit += 1 # If on a tree increase the counter
+    if currentLine[horiPos] == "#": numTreesHit += 1 # If on a tree increase the counter
     print(numTreesHit, horiPos)
     #move()
     horiPos += 3
