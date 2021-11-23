@@ -332,17 +332,25 @@ print(piste)
 #    global horiPos += 3
 #    if horiPos >= piste: horiPos = horiPos - piste # Ensures that if the toboggan goes off the right of the data, it starts again. Because the trees wrap 
 
-def count_trees(input):
+def count_trees(input, horiStep=3, vertStep=1):
     numTreesHit = 0 # Counter for answer at the end
     horiPos = 0 # Where across that line/list entry the toboggan is
 
-    for currentLine in input:
-        print(currentLine)
+    for currentLine in input[::vertStep]:
         if currentLine[horiPos] == "#": numTreesHit += 1 # If on a tree increase the counter
-        print(numTreesHit, horiPos)
         #move()
-        horiPos = (horiPos + 3) % piste # Ensures that if the toboggan goes off the right of the data, it starts again. Because the trees wrap
+        horiPos = (horiPos + horiStep) % piste # Ensures that if the toboggan goes off the right of the data, it starts again. Because the trees wrap
 
     return numTreesHit
     
+print("Part 1:")
 print(count_trees(split_input))
+
+print("Part 2:")
+print(
+        count_trees(split_input, horiStep=1, vertStep=1) *
+        count_trees(split_input, horiStep=3, vertStep=1) *
+        count_trees(split_input, horiStep=5, vertStep=1) *
+        count_trees(split_input, horiStep=7, vertStep=1) *
+        count_trees(split_input, horiStep=1, vertStep=2)
+);
