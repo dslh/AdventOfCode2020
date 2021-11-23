@@ -1,4 +1,7 @@
-raw_input = """4-6 b: bbbdbtbbbj
+raw_input = """3-12 s: sskssssssssss
+14-15 z: zrndzbmrzzpzzqzj
+12-18 l: tllllllllllllplllbl
+4-6 b: bbbdbtbbbj
 1-6 g: ggvggbgggstg
 1-4 s: lssss
 13-14 v: hvvcvvvvvvvvvsvvv
@@ -7,9 +10,6 @@ raw_input = """4-6 b: bbbdbtbbbj
 5-6 b: dbkbhb
 4-7 p: ppfppppq
 4-5 j: jjjjj
-3-12 s: sskssssssssss
-14-15 z: zrndzbmrzzpzzqzj
-12-18 l: tllllllllllllplllbl
 8-10 b: bdbvqbtbrb
 1-3 c: tcqccc
 1-2 n: nbnj
@@ -1033,19 +1033,36 @@ while lineNum <= 999: #1000: #len(split_input) - Hopefully I'm not 1 to long or 
             #print(x)
 
     times = splitLine[0]
+    #print("The times part of the list is: ")
+    #print(times)
     whereHyp = times.find("-")
-    lenTimes = len(times)
+    #print("The hyphen is in this place: ")
+    #print(whereHyp)
+    lenTimes = len(times) - 1
+    #print("The length is : ")
+    #print(lenTimes)
     if whereHyp == 1:
         min = times[0]
+        #print("Only 1 digit, so the min x times is: ")
+        #print(min)
     else:
         min = times[0] + times[1]
+        #print("More than 1 digit, so the min x times is: ")
+        #print(min)
     if lenTimes - whereHyp == 1:
         max = times[whereHyp + 1]
+        #print("Number after the hyphen only 1 digit is: ")
+        #print(max)
     else:
+        #print("Two digits after hyphen. They are in places: ")
         tmp1 = whereHyp + 1
+        #print(tmp1)
         tmp2 = whereHyp + 2
-        #max = times[tmp1] + times[tmp2]
-        max = times[whereHyp + 1]
+        #print(tmp2)
+        max = times[tmp1] + times[tmp2]
+        #max = times[whereHyp + 1]
+        #print("Number after the hyphen with > 1 digit is: ")
+        #print(max)
         #max[tmp1:lenTimes]
 
     #print(min, max)
