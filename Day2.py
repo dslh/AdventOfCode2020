@@ -1022,12 +1022,7 @@ for firstLine in split_input:
 
     password = splitLine[2]
 
-    i = 0
-    for x in password:
-        if letter == x:
-            i += 1
-            #print(i)
-            #print(x)
+    i = password.count(letter)
 
     times = splitLine[0]
     whereHyp = times.find("-")
