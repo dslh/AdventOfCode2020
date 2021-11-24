@@ -969,8 +969,7 @@ def findColumn(colCode): # This finds the column seat number from the 3 letter c
     return col
 
 def seatID(row, col): # This calculates the seat ID, of which we need to find the highest for the answer
-    ID = 8 * row + col
-    return ID
+    return 8 * row + col
 
 highestID = 0 # Holder for answer, initially set to zero
 ppNum = 0 # Current seat number/list entry
