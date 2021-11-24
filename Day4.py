@@ -1185,9 +1185,7 @@ while ppNum < numberOfPP: #Check each passport
     currentPP = splitInput[ppNum] # Get's the line/passport
     #print(currentPP)
     
-    i = 0
-    for x in currentPP: #Checks to see how many entries are in the passport
-        if x == ":": i += 1 # Counts the number of ':'
+    i = len(currentPP.split())
     
     if i == 8: #If * it's a correct passport
         numCorrectPP += 1
