@@ -968,7 +968,9 @@ def findColumn(colCode): # This finds the column seat number from the 3 letter c
     if colCode[2] == "R": col += 1
     return col
 
-def seatID(row, col): # This calculates the seat ID, of which we need to find the highest for the answer
+def seatID(ticket): # This calculates the seat ID, of which we need to find the highest for the answer
+    row = findRow(ticket[:7])
+    col = findColumn(ticket[7:])
     return 8 * row + col
 
 highestID = 0 # Holder for answer, initially set to zero
@@ -980,20 +982,8 @@ while ppNum < numberOfPP: #Check each seat code
     #print("NewPerson")
     #print(currentPP)
     
-    #Treats the row
-    rowC = currentPP[:7] # Get's the 7 letter row code
-    #print(rowC)
-    row1 = findRow(rowC)
-    #print(row1)
-    
-    #Treats the column
-    colC = currentPP[7:] # Get's the 3 letter column code
-    #print(colC)
-    col1 = findColumn(colC)
-    #print(col1)
-    
     #Gets the seatID and checks if it's the highest
-    currentSeatID = seatID(row1, col1)
+    currentSeatID = seatID(currentPP)
     #print(currentSeatID)
     if currentSeatID > highestID:
         highestID = currentSeatID
