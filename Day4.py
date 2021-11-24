@@ -1170,6 +1170,23 @@ byr:1959"""
 
 splitInput = rawInput.split("\n\n") # Splitting the data into a list
 
+# Converts a passport specification string into a dictionary.
+#
+# Example:
+#   parse_passport('hgt:150cm pid:660176034 hcl:#c0946f')
+#   => {'hgt': '150cm', 'pid': '660176034', 'hcl': '#c0946f'}
+def parse_passport(raw):
+    fields = raw.split()
+
+    passport = dict()
+    for field in fields:
+        key, value = field.split(':')
+        passport[key] = value
+
+    return passport
+
+passports = [parse_passport(line) for line in splitInput]
+
 def valid_passport(passport):
     i = len(passport.split())
     
