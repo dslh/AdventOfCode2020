@@ -982,13 +982,13 @@ while ppNum < numberOfPP: #Check each seat code
     #print(currentPP)
     
     #Treats the row
-    rowC = currentPP[0:7] # Get's the 7 letter row code
+    rowC = currentPP[:7] # Get's the 7 letter row code
     #print(rowC)
     row1 = findRow(rowC)
     #print(row1)
     
     #Treats the column
-    colC = currentPP[7:10] # Get's the 3 letter column code
+    colC = currentPP[7:] # Get's the 3 letter column code
     #print(colC)
     col1 = findColumn(colC)
     #print(col1)
