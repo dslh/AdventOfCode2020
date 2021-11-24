@@ -1169,15 +1169,6 @@ hgt:160cm hcl:#c0946f
 byr:1959"""
 
 splitInput = rawInput.split("\n\n") # Splitting the data into a list
-print("splitInput = ")
-numberOfPP = len(splitInput) # Number of list entries/passports
-print(numberOfPP)
-
-######piste = len(split_input[0]) # Width of trees
-######print(piste)
-
-numCorrectPP = 0 # Counter for answer at the end
-########horiPos = 0 # Where across that line/list entry the toboggan is
 
 def valid_passport(passport):
     i = len(passport.split())
@@ -1193,8 +1184,7 @@ def valid_passport(passport):
             print("found a 7 entry passport without cid, so it's valid")
             return True
 
-for currentPP in splitInput:
-    if valid_passport(currentPP):
-        numCorrectPP += 1
+valid_passports = [pp for pp in splitInput if valid_passport(pp)]
+numCorrectPP = len(valid_passports)
 
 print(numCorrectPP)
