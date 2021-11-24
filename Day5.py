@@ -946,9 +946,6 @@ BBFBBBFLLL
 BFBFBBBRLL"""
 
 splitInput = rawInput.split("\n") # Splitting the data into a list
-print("splitInput = ")
-numberOfPP = len(splitInput) # Number of list entries/passports
-print(numberOfPP)
 
 def findRow(rowCode): # This finds the row number from the 7 letter row code
     row = 0
@@ -973,21 +970,7 @@ def seatID(ticket): # This calculates the seat ID, of which we need to find the 
     col = findColumn(ticket[7:])
     return 8 * row + col
 
-highestID = 0 # Holder for answer, initially set to zero
-ppNum = 0 # Current seat number/list entry
-print(highestID, ppNum)
-
-while ppNum < numberOfPP: #Check each seat code
-    currentPP = splitInput[ppNum] # Get's the line/passport
-    #print("NewPerson")
-    #print(currentPP)
-    
-    #Gets the seatID and checks if it's the highest
-    currentSeatID = seatID(currentPP)
-    #print(currentSeatID)
-    if currentSeatID > highestID:
-        highestID = currentSeatID
-    
-    ppNum += 1
+ids = [seatID(ticket) for ticket in splitInput]
+highestID = max(ids)
 
 print(highestID)
