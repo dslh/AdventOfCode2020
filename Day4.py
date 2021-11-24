@@ -1177,14 +1177,9 @@ print(numberOfPP)
 ######print(piste)
 
 numCorrectPP = 0 # Counter for answer at the end
-ppNum = 0 # Current passport number/list entry
 ########horiPos = 0 # Where across that line/list entry the toboggan is
-print(numCorrectPP, ppNum)
 
-while ppNum < numberOfPP: #Check each passport
-    currentPP = splitInput[ppNum] # Get's the line/passport
-    #print(currentPP)
-    
+for currentPP in splitInput:
     i = len(currentPP.split())
     
     if i == 8: #If * it's a correct passport
@@ -1196,6 +1191,5 @@ while ppNum < numberOfPP: #Check each passport
         else:
             numCorrectPP += 1
             print("found a 7 entry passport without cid, so it's valid")
-    ppNum += 1
     
 print(numCorrectPP)
