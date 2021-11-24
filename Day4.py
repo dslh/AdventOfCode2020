@@ -1187,21 +1187,11 @@ def parse_passport(raw):
 
 passports = [parse_passport(line) for line in splitInput]
 
+# For part 1, a passport is valid if it has 7 fields, not including cid
 def valid_passport(passport):
-    i = len(passport.split())
-    
-    if i == 8: #If * it's a correct passport
-        print("found a 8 entry passport, so it's valid")
-        return True
-    elif i == 7: # Else if 7 then it has to contain cid
-        if "cid" in passport:
-            print("found a 7 entry passport with cid, so it doesn't count")
-            return False
-        else:
-            print("found a 7 entry passport without cid, so it's valid")
-            return True
+    return sum(field != 'cid' for field in passport.keys()) == 7
 
-valid_passports = [pp for pp in splitInput if valid_passport(pp)]
+valid_passports = [pp for pp in passports if valid_passport(pp)]
 numCorrectPP = len(valid_passports)
 
 print(numCorrectPP)
