@@ -970,7 +970,4 @@ def seatID(ticket): # This calculates the seat ID, of which we need to find the 
     col = findColumn(ticket[7:])
     return 8 * row + col
 
-ids = [seatID(ticket) for ticket in splitInput]
-highestID = max(ids)
-
-print(highestID)
+print(max(seatID(ticket) for ticket in splitInput))
