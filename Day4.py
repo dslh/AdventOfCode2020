@@ -1169,35 +1169,29 @@ hgt:160cm hcl:#c0946f
 byr:1959"""
 
 splitInput = rawInput.split("\n\n") # Splitting the data into a list
-print("splitInput = ")
-numberOfPP = len(splitInput) # Number of list entries/passports
-print(numberOfPP)
 
-######piste = len(split_input[0]) # Width of trees
-######print(piste)
+# Converts a passport specification string into a dictionary.
+#
+# Example:
+#   parse_passport('hgt:150cm pid:660176034 hcl:#c0946f')
+#   => {'hgt': '150cm', 'pid': '660176034', 'hcl': '#c0946f'}
+def parse_passport(raw):
+    fields = raw.split()
 
-numCorrectPP = 0 # Counter for answer at the end
-ppNum = 0 # Current passport number/list entry
-########horiPos = 0 # Where across that line/list entry the toboggan is
-print(numCorrectPP, ppNum)
+    passport = dict()
+    for field in fields:
+        key, value = field.split(':')
+        passport[key] = value
 
-while ppNum < numberOfPP: #Check each passport
-    currentPP = splitInput[ppNum] # Get's the line/passport
-    #print(currentPP)
-    
-    i = 0
-    for x in currentPP: #Checks to see how many entries are in the passport
-        if x == ":": i += 1 # Counts the number of ':'
-    
-    if i == 8: #If * it's a correct passport
-        numCorrectPP += 1
-        print("found a 8 entry passport, so it's valid")
-    elif i == 7: # Else if 7 then it has to contain cid
-        if "cid" in currentPP:
-            print("found a 7 entry passport with cid, so it doesn't count")
-        else:
-            numCorrectPP += 1
-            print("found a 7 entry passport without cid, so it's valid")
-    ppNum += 1
-    
+    return passport
+
+passports = [parse_passport(line) for line in splitInput]
+
+# For part 1, a passport is valid if it has 7 fields, not including cid
+def valid_passport(passport):
+    return sum(field != 'cid' for field in passport.keys()) == 7
+
+valid_passports = [pp for pp in passports if valid_passport(pp)]
+numCorrectPP = len(valid_passports)
+
 print(numCorrectPP)
