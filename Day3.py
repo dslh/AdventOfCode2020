@@ -324,32 +324,33 @@ rawInput = """.#......#..####.....#..#.......
 
 split_input = rawInput.split("\n") # Splitting the data into a list
 print("split_input = ")
-height = len(split_input) # Length of the ski field
-print(height)
 piste = len(split_input[0]) # Width of trees
 print(piste)
-
-numTreesHit = 0 # Counter for answer at the end
-lineNum = 0 # Current line number/list entry
-horiPos = 0 # Where across that line/list entry the toboggan is
-print(numTreesHit, lineNum, horiPos)
 
 #def move(): # Function to move 1 line down and 3 squares across
 #    global lineNum += 1
 #    global horiPos += 3
 #    if horiPos >= piste: horiPos = horiPos - piste # Ensures that if the toboggan goes off the right of the data, it starts again. Because the trees wrap 
 
-while lineNum < height:
-    currentLine = split_input[lineNum] # Get's the line
-    print(currentLine)
-    currentGround = currentLine[horiPos] # Get's the terrain
-    print(currentGround)
-    if currentGround == "#": numTreesHit += 1 # If on a tree increase the counter
-    print(numTreesHit, lineNum, horiPos)
-    #move()
-    lineNum += 1
-    horiPos += 3
-    if horiPos >= piste: horiPos = horiPos - piste # Ensures that if the toboggan goes off the right of the data, it starts again. Because the trees wrap 
+def count_trees(input, horiStep=3, vertStep=1):
+    numTreesHit = 0 # Counter for answer at the end
+    horiPos = 0 # Where across that line/list entry the toboggan is
 
+    for currentLine in input[::vertStep]:
+        if currentLine[horiPos] == "#": numTreesHit += 1 # If on a tree increase the counter
+        #move()
+        horiPos = (horiPos + horiStep) % piste # Ensures that if the toboggan goes off the right of the data, it starts again. Because the trees wrap
+
+    return numTreesHit
     
-print(numTreesHit)
+print("Part 1:")
+print(count_trees(split_input))
+
+print("Part 2:")
+print(
+        count_trees(split_input, horiStep=1, vertStep=1) *
+        count_trees(split_input, horiStep=3, vertStep=1) *
+        count_trees(split_input, horiStep=5, vertStep=1) *
+        count_trees(split_input, horiStep=7, vertStep=1) *
+        count_trees(split_input, horiStep=1, vertStep=2)
+);
