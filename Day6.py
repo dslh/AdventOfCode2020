@@ -25,20 +25,11 @@ def howManyNewAnswers(groupsAnswers): # This finds how many identical answers a 
     individual_sets = [set(x) for x in individual_answers]
     #print(individual_sets)
     #print(type(individual_sets))
-    first_set = True
-    union = set(())
+    union = individual_sets[0]
     #print(union)
     #print(type(union))
-    for x in individual_sets:
-        #print(x)
-        #temp = x
-        #print("temp is")
-        #print(type(temp))
-        if first_set == True:
-            union = x
-            first_set = False
-        else:
-            union = union.intersection(x)
+    for x in individual_sets[1:]:
+        union = union.intersection(x)
     #cleaned = individual_sets.intersection()
     #groupSet = set(withoutLines)
     #print(union)    
