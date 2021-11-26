@@ -27,3 +27,11 @@ def howManyNewAnswers(groupsAnswers): # This finds how many identical answers a 
 print("Part 2:")
 
 print(sum(howManyNewAnswers(x) for x in splitInput))
+
+def the_splat_operator(a, b):
+    print("a is %d" % a)
+    print("b is %d" % b)
+
+the_splat_operator(1, 2)
+array = [3, 4]
+the_splat_operator(*array)
