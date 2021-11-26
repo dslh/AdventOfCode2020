@@ -21,19 +21,8 @@ print("Part 1:")
 print(sum(howManyAnswers(x) for x in splitInput))
 
 def howManyNewAnswers(groupsAnswers): # This finds how many identical answers a group gave
-    individual_answers = groupsAnswers.split("\n")
-    individual_sets = [set(x) for x in individual_answers]
-    #print(individual_sets)
-    #print(type(individual_sets))
-    union = individual_sets[0]
-    #print(union)
-    #print(type(union))
-    for x in individual_sets[1:]:
-        union = union.intersection(x)
-    #cleaned = individual_sets.intersection()
-    #groupSet = set(withoutLines)
-    #print(union)    
-    return len(union)
+    sets = [set(answers) for answers in groupsAnswers.split()]
+    return len(sets[0].intersection(*sets[1:]))
 
 print("Part 2:")
 
