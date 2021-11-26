@@ -7,26 +7,20 @@ from get_aoc import get_input
 rawInput = get_input(6)
 
 splitInput = rawInput.split("\n\n") # Splitting the data into a list
-print("splitInput = ")
-print(splitInput)
-print(len(splitInput)) # Number of list groups
+groups = [[set(answers) for answers in group.split()] for group in splitInput]
 
-def howManyAnswers(groupsAnswers): # This finds how many difference answers a group gave
-    #without_line = groupsAnswers.strip() # Why didn't this strip function work?
-    withoutLines = groupsAnswers.replace("\n","")
-    groupSet = set(withoutLines)
-    return len(groupSet)
+def howManyAnswers(group): # This finds how many difference answers a group gave
+    return len(group[0].union(*group[1:]))
 
 print("Part 1:")
-print(sum(howManyAnswers(x) for x in splitInput))
+print(sum(howManyAnswers(group) for group in groups))
 
-def howManyNewAnswers(groupsAnswers): # This finds how many identical answers a group gave
-    sets = [set(answers) for answers in groupsAnswers.split()]
-    return len(sets[0].intersection(*sets[1:]))
+def howManyNewAnswers(groups): # This finds how many identical answers a group gave
+    return len(groups[0].intersection(*groups[1:]))
 
 print("Part 2:")
 
-print(sum(howManyNewAnswers(x) for x in splitInput))
+print(sum(howManyNewAnswers(group) for group in groups))
 
 def the_splat_operator(a, b):
     print("a is %d" % a)
